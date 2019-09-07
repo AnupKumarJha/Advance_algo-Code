@@ -1,0 +1,90 @@
+#include<bits/stdc++.h>
+using namespace std;
+
+void LUDecompose(double MATRIX[][20], double LOWER[][20],double UPPER[][20],int n) 
+{ 
+   
+  
+
+
+    for (int i = 0; i < n; i++) { 
+           for (int k = i; k < n; k++) { 
+                   int S = 0; 
+                   for (int j = 0; j < i; j++) 
+                   { S += (LOWER[i][j] * UPPER[j][k]);}
+                   
+                 UPPER[i][k] = MATRIX[i][k] - S; 
+            } 
+  
+     
+        for (int k = i; k < n; k++) { 
+            if (i == k) 
+                LOWER[i][i] = 1; { 
+  
+              
+            int S = 0; 
+                for (int j = 0; j < i; j++) 
+                    S += (LOWER[k][j] * UPPER[j][i]); 
+                 LOWER[k][i] = (MATRIX[k][i] - S) / UPPER[i][i]; 
+            } 
+        } 
+    } 
+  
+
+
+  
+
+    
+
+
+
+void matrix_print(double matrix[][20],int n){
+    for (int i = 0; i < n; i++) {
+      for (int j = 0; j < n; j++) {
+         cout<<round(matrix[i][j])<<" ";
+      }
+      cout<<"\n";
+    }
+}
+    
+    
+
+
+
+
+
+
+
+
+
+int main() {
+    int n;
+    cout <<"enter the size of matrix \n";
+    
+    cin>>n;
+    
+   double MATRIX[20][20], LOWER[20][20], UPPER[20][20];
+   
+   
+ cout<<"enter the size of "<<n<<"*"<<n<<"Matrix\n";
+ 
+   for (int i = 0; i < n; i++)
+   for (int j = 0; j < n; j++)
+   cin >> MATRIX[i][j];
+   
+   
+   
+   
+   
+   LUDecompose(MATRIX, LOWER, UPPER, n);
+   
+   
+   cout << "L =\t "<<endl;
+   
+ matrix_print(LOWER,n);
+ 
+   cout << "U = \t"<<endl;
+   matrix_print(UPPER,n);
+   
+   return 0;
+}
