@@ -1,0 +1,64 @@
+#include <bits/stdc++.h>
+using namespace std;
+
+void generate_graph(vector<pair<int ,int > > Vertex[10],int u,int v,int wt){
+    
+    Vertex[u].push_back(make_pair(v,wt));
+ 
+    
+}
+
+
+
+void print_grah(vector<pair<int,int > > v[10],int n){
+
+    
+   for(int i=0; i<n; ++i){
+        cout<<"["<<i<<"]->";
+        for(int j=0; j<v[i].size(); ++j){
+            cout<<"["<<v[i][j].first<<"]";
+        }
+        cout<<"\n";
+
+    }
+    
+    
+}
+
+
+int main(){
+    
+  
+    int n;
+    cout<<"enter no of vertices\n";
+    cin>>n;
+    int e;
+    cout<<"enter the no of edges\n";
+    cin>>e;
+     
+ 
+   vector < pair <int, int  > > Vector[4];
+   
+   
+cout<<"add the source ,destination and weight in integer format\n";
+cout<<"of all the edges\n";
+   for(int i=0;i<e;i++){
+       
+       int  u;
+       int v;
+       int wt;
+       cout<<"edge "<<i+1<<"\n";
+       cin>>u>>v>>wt;
+       generate_graph(Vector,u,v,wt);
+       
+   }
+   
+
+   
+ cout<<"adjacency list =\n"  ;
+print_grah(Vector,n);
+    
+    
+    
+    return 0;
+}
