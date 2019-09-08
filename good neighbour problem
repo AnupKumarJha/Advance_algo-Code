@@ -1,0 +1,47 @@
+#include<bits/stdc++.h>
+using namespace std;
+
+int Check_goodNo(int k){
+    
+    string st=to_string(k);
+    
+    
+    int len=st.length();
+    int arr[len];
+    
+    for(int i=0;i<len;i++){
+     arr[i]=st[i];
+        
+    }
+    int count=0;
+    for(int i=0;i<len;i++){
+        
+        if(abs(arr[i+1]-arr[i])==1)count++;
+        else break;
+    }
+    if(count==len-1) return 1;
+    else 0;
+    
+  
+}
+
+
+int main(){
+
+int n;
+cout<<"enter the no\n";
+cin>>n;
+
+
+for(int i=1;i<n;i++){
+    
+    if(i<=9) cout<<i<<" ";
+    else {
+        if(Check_goodNo(i)==1) cout<<i<<" ";
+        else continue;
+        
+    }
+}
+    
+    return 0;
+}
