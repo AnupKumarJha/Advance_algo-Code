@@ -1,0 +1,50 @@
+#include<bits/stdc++.h>
+using namespace std;
+
+void bit_reverse(int arr[],int i,int k){
+    int temp1=arr[i];
+    int A[k];
+
+    for(int a=0;a<k;a++){
+        A[k-a]=i%2;
+        i=i/2;
+    }
+    for(int i=0;i<k/2;i++){
+        int temp=A[i];
+        A[i]=A[k-i];
+        A[k-i]=temp;
+    }
+    int temp2=1;
+    for(int i=0;i<k;i++){
+        temp2=temp2*2^i*A[i];
+    }
+    
+    arr[i]=arr[temp2];
+    arr[temp2]=temp1;
+    
+    cout<<arr[i];
+}
+
+int main(){
+    int n;
+    cout<<"enter the value of n \n";
+    cin>>n;
+    int  arr[n];
+    cout<<"enter the n no of  values \n";
+    for(int i=0;i<n;i++){
+        
+       cin>>arr[i];
+    }
+    int k=log2(n);
+    
+    for(int i=0;i<n/2;i++){
+        
+        bit_reverse(arr,i,k);
+    }
+   /* 
+    for(int i=0;i<n;i++){
+        cout<<arr[i]<<" ";
+    }
+    */
+    return 0;
+}
