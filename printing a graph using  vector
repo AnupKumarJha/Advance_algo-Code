@@ -1,0 +1,53 @@
+#include<bits/stdc++.h>
+using namespace std;
+struct edge {
+    
+    int u,v,wt;
+    
+};
+
+int main(){
+int n;
+cout<<"enter the no vertices\n";
+
+cin>>n;
+int E;
+
+vector< pair<int,int > > V[n];
+cout<<"enter the no of edges\n";
+
+cin>>E;
+    
+    edge ed[E];
+    cout<<"enter the sorrce ,destination and weight\n";
+    
+    
+    for(int i=0;i<E;i++){
+        int src,dest,wt;
+        cin>>src>>dest>>wt;
+        V[src].push_back(make_pair(dest,wt));
+        //adj[0].push_back(make_pair(1, 389));
+        ed[i].u=src;
+        ed[i].v=dest;
+        ed[i].wt=wt;
+        
+        
+    }
+   // cout<<V[1].first;
+   vector<pair<int ,int >>::iterator it;
+    
+    for(int i=0;i<n;i++){
+        cout<<"adjecent vertices of vectex"<<i<<"are";
+       for(it=V[i].begin();it!=V[i].end();it++){
+           
+           cout<<"->"<<it->first<<"with weight"<<it->second<<"\t";
+           
+       }
+       cout<<"\n";
+        
+        
+        
+    }
+    
+    return 0;
+    }
