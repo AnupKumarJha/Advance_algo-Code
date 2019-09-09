@@ -1,0 +1,47 @@
+#include<bits/stdc++.h>
+using namespace std;
+
+struct val{
+    int SUM;
+    int COUNT;
+    
+};
+
+val mul_count(int arr[],int n,int x){
+    int count=0;
+    
+    int sum=arr[0];
+    if(sum!=1) count++;
+    for(int i=1;i<=n;i++){
+        sum=sum*x+arr[i];
+        count++;
+        
+    }
+    
+    val val1={sum,--count};
+    return val1;
+    
+    
+}
+
+
+int main(){
+    
+    int n;
+    cout<<"max power of polynomial\n";
+    cin>>n;
+int  arr[n+1];
+    for(int i=0;i<=n;i++){
+        cout<<"enter the coeff of x^"<<n-i<<"\n";
+        cin>>arr[i];
+    }
+     val val2;
+    int x;
+    cout<<"enter the value of x\n";
+    cin>>x;
+   val2= mul_count(arr,n,x);
+   cout<<"sum ="<<val2.SUM<<"\n";
+   cout<<" no of multiplication ="<<val2.COUNT;
+   
+    return 0;
+}
