@@ -1,0 +1,72 @@
+#include<bits/stdc++.h>
+using namespace std;
+
+int call_counter(int arr[4][4],int n,int j){
+    int counter=0;
+    
+    for(int i=1;i<n;i++){
+        if(arr[i][j]==1){
+            
+            
+            counter =counter+j+1;
+            
+        }
+        
+        else {
+            while(arr[i][j]==0)j--;
+            counter=counter+j+1;
+        }
+    }
+    return counter;
+}
+
+
+int main(){
+    /*int n;
+    cout<<"enter the size of 2 D array\n";
+    cin>>n;
+    int A[n][n];
+    for(int i=0;i<n;i++){
+        cout<<"enter the row "<<i+1<<"value\n";
+        for(int j=0;j<n;j++){
+            cin>>A[i][j];
+            
+        }
+    }
+    */
+    
+   int A[4][4]={{1,1 ,1,0},{1 ,1,0,0},{1,1,0,0},{1,0,0,0}};
+    int n=4;
+    
+    int count=0;
+    int j;
+    //int counter;
+    
+   
+        for(j=0;j<n;j++){
+            if(A[0][j]==1){
+                count++;
+                if(j==n-1)  
+                    {
+                        count=count+call_counter(A,n,j);
+                         break;
+                    }
+               
+            }
+            else
+            {
+                
+                j--;
+                
+              count=count+call_counter(A,n,j);
+                break;
+                
+            }
+            
+        }
+        
+
+      cout<<count;
+    return 0;
+    
+}
