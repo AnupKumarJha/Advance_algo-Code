@@ -1,0 +1,38 @@
+#include<bits/stdc++.h>
+using namespace std;
+
+
+int sum=0;
+int Matrix_multiplication(int A[],int l,int h){
+    if(l==h) return 0;
+    
+
+        
+        int arr[h-l]={0};
+        int index=0;;
+        for(int k=l;k<h;k++){
+            
+        arr[index] = (Matrix_multiplication(A,l,k)+Matrix_multiplication(A,k+1,h)+A[l]*A[k+1]*A[h]);  
+            index++;
+        }
+        int min=INT_MAX;
+        for(int ind=0;ind<h-l+1;ind++){
+        if(min>arr[ind]) min=arr[ind];    
+        }
+        ///cout<<"it is min ="<<min;
+        return min;
+}
+    
+
+
+
+int main(){
+    int n=4;
+  int   arr[n]={5,2,7,3};
+    cout<<Matrix_multiplication(arr,0,n-1);
+    
+    
+
+    return 0;
+    
+}
