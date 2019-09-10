@@ -1,0 +1,104 @@
+#include<bits/stdc++.h>
+using namespace std;
+
+//for discover_time and finish_time.
+struct TIME{
+  
+  int discover_time,finish_time;
+  
+};
+//for edge 
+
+struct EDGE{
+  int source,destination;  
+};
+
+int Time=0;
+
+void Dfs_recursive(vector<pair<int ,int > > V[] ,int src,bool visited[],struct TIME time[])
+
+{
+    
+    if(visited[src]==true) return;
+    else {
+        cout<<"in"<<src<<" \n";
+        visited[src]=true;
+    }
+    
+    
+    
+    
+    time[src].discover_time=++Time;
+    
+    vector<pair<int ,int >>::iterator it;
+    for(it=V[src].begin();it!=V[src].end();it++){
+        if(visited[it->first]!=true){
+            cout<<visited[it->first]<<"here";
+        Dfs_recursive(V,visited[it->first],visited,time);
+            
+        }
+        
+    }
+  
+   time[src].finish_time=++Time;
+ 
+    
+}
+
+
+
+
+
+
+int main(){
+    int n;
+    //cout<<"enter the no of vetices\n";
+    cin>>n;
+    int e;
+    //cout<<"enter teh no of edges\n";
+    cin>>e;
+    
+  vector<pair<int, int > > V[n];
+ // cout<<"enter the src ,dest,and weight\n";
+  
+  EDGE ed[e];//keeping the edge 
+  
+  for(int i=0;i<e;i++){
+ int u,v,wt;
+ cin>>u>>v>>wt;
+ V[u].push_back(make_pair(v,wt));
+ ed[i].source=u;
+ ed[i].destination=v;
+      
+  }
+  
+  vector<pair<int, int >>::iterator it;//for iterating over a vertex adjacent vertices
+  
+  for(int i;i<n;i++){
+      
+      cout<<"adjacent of vetex "<<i;
+     for(it=V[i].begin();it!=V[i].end();it++){
+         cout<<"->"<<it->first;
+         
+     }
+     cout<<"\n";
+  }
+  
+ TIME time[n];//for discover_time and finish_time .
+  
+  bool visited[n]={false};//for whether the node is visited or not;
+
+  Dfs_recursive(V,0,visited,time);
+  //for printing that what kind of edge it that .
+  cout<<"vertices\t"<<"discover time\t"<<"finish_time\n";
+  for(int i=0;i<n;i++){
+      cout<<i<<"\t"<<time[i].discover_time<<"\t"<<time[i].finish_time<<"\n";
+  }
+  
+  for(int i=0;i<e;i++){
+      
+      
+  }
+
+    
+}
