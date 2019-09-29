@@ -9,7 +9,7 @@ int main(){
             cin>>arr[i][j];
         }
     }
-    
+   
     int p[n];
     for(int i=0;i<n;i++){
         p[i]=i;
@@ -53,6 +53,42 @@ int main(){
         cout<<"\n";
     }
     
+    double l[n][n],u[n][n];
+    for(int i=0;i<n;i++){
+        for(int j=0;j<n;j++){
+            if(i<=j){
+                if(i==j){
+                    l[i][j]=1;
+                    u[i][j]=arr[i][j];
+                }
+                else {
+                u[i][j]=arr[i][j];
+                l[i][j]=0;    
+                }
+                
+            }
+            else {
+                u[i][j]=0;
+                l[i][j]=arr[i][j];
+            }
+        }
+    }
+    
+    cout<<"upper matrix\n";
+    for(int i=0;i<n;i++){
+        for(int j=0;j<n;j++){
+            cout<<u[i][j]<<" ";
+        }
+        cout<<"\n";
+    }
+    
+    cout<<"lower matrix\n";
+    for(int i=0;i<n;i++){
+        for(int j=0;j<n;j++){
+            cout<<l[i][j]<<" ";
+        }
+        cout<<"\n";
+    }
     
 return 0;
 }
